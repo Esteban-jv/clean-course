@@ -1,45 +1,36 @@
+// Animals
 interface Bird {
-    fly(): void;
     eat(): void;
+}
+
+// Capabilities
+interface Runner {
     run(): void;
+}
+interface Swimmer {
     swim(): void;
 }
+interface Flyer {
+    fly(): void;
+}
 
-class Tucan implements Bird {
+class Tucan implements Bird, Runner, Flyer {
     public fly() {};
     public eat() {};
     public run() {};
-    public swim() {
-        throw new Error('I cannot swim');
-    }
 }
 
-class Hummingbird implements Bird {
+class Hummingbird implements Bird, Flyer {
     public fly() {};
     public eat() {};
-    public run() {};
-    public swim() {
-        throw new Error('I cannot swim');
-    }
 }
 
-class Ostrich implements Bird {
-    public fly() {
-        throw new Error('I cannot fly');
-    };
+class Ostrich implements Bird, Runner {
     public eat() {};
     public run() {};
-    public swim() {
-        throw new Error('I cannot swim');
-    }
 }
 
-class Penguin implements Bird {
-    public fly() {
-        throw new Error('I cannot fly');
-    };
+class Penguin implements Bird, Swimmer {
     public eat() {};
-    public run() {};
-
     public swim() {};
 }
