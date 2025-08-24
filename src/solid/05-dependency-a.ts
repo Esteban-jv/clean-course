@@ -1,13 +1,15 @@
 import { PostService } from './05-dependency-b';
-import { JsonDatabaseService, LocalDataBaseService } from './05-dependency-c';
+import { JsonDatabaseService, LocalDataBaseService, ApiPostProvider } from './05-dependency-c';
 
 
 // Main
 (async () => {
 
-    const provider = new JsonDatabaseService();
+    /* En este caso, los proveedores son intercambiables sin modificar el código de dominio */
+    // const provider = new JsonDatabaseService();
     // const provider = new LocalDataBaseService();
-    // No funciona el cambio porque falta el principio de inversión de dependencias
+    const provider = new ApiPostProvider();
+
     const postService = new PostService(provider);
 
     const posts = await postService.getPosts();
